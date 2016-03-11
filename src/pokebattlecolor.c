@@ -1,5 +1,5 @@
 #include <pebble.h>
-
+#include "netdownload.h"
 Window *window;
 static GBitmap *s_bitmap = NULL;
 static GBitmap *e_bitmap = NULL;
@@ -36,7 +36,9 @@ static BitmapLayer *ally_status_sleep_layer;
 static GBitmap *ally_status_par_image;
 static BitmapLayer *ally_status_par_layer;
 
-static bool initiate_watchface = true;
+static bool initiate_watchface = true
+;
+static bool ally = true;
 
 #define NUM_LEVEL_PKEY  0
 #define NUM_LEVEL_FRESH 5
@@ -77,6 +79,37 @@ TextLayer *text_level_ally_layer;
 TextLayer *text_level_enemy_layer;	
 
 #define LAST_DAY_SEEN_PKEY 2
+
+
+void download_complete_handler(NetDownload *download) {
+  printf("Loaded image with %lu bytes", download->length);
+  printf("Heap free is %u bytes", heap_bytes_free());
+  GBitmap *current_bmp;
+  BitmapLayer *bitmap_layer;
+  if(ally){
+    current_bmp = s_bitmap;
+    bitmap_layer = s_bitmap_layer;
+  }else{
+    current_bmp = e_bitmap;
+    bitmap_layer = e_bitmap_layer;
+  }
+  GBitmap *bmp = gbitmap_create_from_png_data(download->data, download->length);
+  bitmap_layer_set_bitmap(bitmap_layer, bmp);
+
+  // Save pointer to currently shown bitmap (to free it)
+  if (current_bmp) {
+    gbitmap_destroy(current_bmp);
+  }
+  current_bmp = bmp;
+
+  // Free the memory now
+  free(download->data);
+
+  // We null it out now to avoid a double free
+  download->data = NULL;
+  netdownload_destroy(download);
+}
+
 
 static void timer_handler(void *context) {
   uint32_t next_delay;
