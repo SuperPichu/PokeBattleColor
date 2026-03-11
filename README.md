@@ -1,2 +1,2 @@
 # PokeBattleColor
-Pebble Time watchface based on PokeBattle
+Pebble Time 2 watchface based on PokeBattleColor

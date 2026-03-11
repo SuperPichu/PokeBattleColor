@@ -155,7 +155,7 @@ void update_level_text()
 
 static void load_time_text_layer(Layer *window_layer)
 {
-  text_time_layer = text_layer_create(GRect(12, 132, 124, 30));
+  text_time_layer = text_layer_create(GRect(17, 179, 172, 41));
  	text_layer_set_text_alignment(text_time_layer, GTextAlignmentCenter);
  	text_layer_set_text_color(text_time_layer, GColorBlack);
  	text_layer_set_background_color(text_time_layer, GColorClear);
@@ -165,7 +165,7 @@ static void load_time_text_layer(Layer *window_layer)
 
 static void load_date_text_layer(Layer *window_layer)
 {
-  text_date_layer = text_layer_create(GRect(60, 106, 76, 10));	
+  text_date_layer = text_layer_create(GRect(83, 144, 106, 14));	
 	text_layer_set_text_alignment(text_date_layer, GTextAlignmentRight);
  	text_layer_set_text_color(text_date_layer, GColorBlack);
  	text_layer_set_background_color(text_date_layer, GColorClear);
@@ -176,14 +176,14 @@ static void load_date_text_layer(Layer *window_layer)
 static void load_pokemon_name_layers(Layer *window_layer)
 {  
   pokemon_name_font  = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_NAME_8));
-  ally_pokemon_name_layer = text_layer_create(GRect(70,78,120,12));
+  ally_pokemon_name_layer = text_layer_create(GRect(97, 106, 167, 16));
   text_layer_set_text_color(ally_pokemon_name_layer, GColorBlack);
  	text_layer_set_background_color(ally_pokemon_name_layer, GColorClear);
   text_layer_set_font(ally_pokemon_name_layer, pokemon_name_font);
  	layer_add_child(window_layer, text_layer_get_layer(ally_pokemon_name_layer));
   text_layer_set_text(ally_pokemon_name_layer, ALLY_POKEMON_NAME);
   
-  enemy_pokemon_name_layer = text_layer_create(GRect(5,2,120,12));
+  enemy_pokemon_name_layer = text_layer_create(GRect(7, 3, 167, 16));
   text_layer_set_text_color(enemy_pokemon_name_layer, GColorBlack);
  	text_layer_set_background_color(enemy_pokemon_name_layer, GColorClear);
   text_layer_set_font(enemy_pokemon_name_layer, pokemon_name_font);
@@ -194,8 +194,8 @@ static void load_pokemon_name_layers(Layer *window_layer)
 static void load_ally_pokemon_layer(Layer *window_layer)
 {
   GRect bounds = layer_get_bounds(window_layer);  
-  bounds.origin.x -= 50;
-  bounds.origin.y += 12;
+  bounds.origin.x -= 69;
+  bounds.origin.y += 16;
 
   s_bitmap_layer = bitmap_layer_create(bounds);
   bitmap_layer_set_compositing_mode(s_bitmap_layer, GCompOpSet);
@@ -207,8 +207,8 @@ static void load_ally_pokemon_layer(Layer *window_layer)
 static void load_enemy_pokemon_layer(Layer *window_layer)
 {
   GRect e_bounds = layer_get_bounds(window_layer);
-  e_bounds.origin.x += 35;
-  e_bounds.origin.y -= 50;  
+  e_bounds.origin.x += 49;
+  e_bounds.origin.y -= 68;  
   
   e_bitmap_layer = bitmap_layer_create(e_bounds);
   bitmap_layer_set_compositing_mode(e_bitmap_layer, GCompOpSet);
@@ -239,7 +239,7 @@ static void hide_ally_status_sleep_layer()
 
 static void load_ally_status_sleep_layer(Layer *window_layer)
 {
-  ally_status_sleep_layer = bitmap_layer_create(GRect(85, 118, 50, 10));
+  ally_status_sleep_layer = bitmap_layer_create(GRect(118, 160, 69, 14));
   if(ally_status_sleep_image) {
     gbitmap_destroy(ally_status_sleep_image);
     ally_status_sleep_image = NULL;
@@ -262,7 +262,7 @@ static void hide_ally_status_par_layer()
 
 static void load_ally_status_par_layer(Layer *window_layer)
 {
-  ally_status_par_layer = bitmap_layer_create(GRect(60, 118, 50, 10));
+  ally_status_par_layer = bitmap_layer_create(GRect(83, 160, 69, 14));
   if(ally_status_par_image) {
     gbitmap_destroy(ally_status_par_image);
     ally_status_par_image = NULL;
@@ -300,7 +300,7 @@ void battery_layer_update_callback(Layer *layer, GContext *ctx) {
   	graphics_context_set_stroke_color(ctx, batteryColor);
   	graphics_context_set_fill_color(ctx,  batteryColor);
 
-   	graphics_fill_rect(ctx, GRect(0, 0, (uint8_t)(battery_level)/2, 3), 0, GCornerNone);
+   	graphics_fill_rect(ctx, GRect(0, 0, (uint8_t)(battery_level) * 69 / 100, 4), 0, GCornerNone);
 
   	if (!battery_plugged) {
       hide_ally_status_par_layer();
@@ -315,7 +315,7 @@ static void load_battery_layer(Layer *window_layer)
  	BatteryChargeState initial = battery_state_service_peek();  
  	battery_level = initial.charge_percent;
  	battery_plugged = initial.is_plugged;
- 	battery_layer = layer_create(GRect(88,100,50,3));
+ 	battery_layer = layer_create(GRect(122, 136, 69, 4));
  	layer_set_update_proc(battery_layer, &battery_layer_update_callback);  
   layer_add_child(window_layer, battery_layer);
 }
@@ -325,26 +325,26 @@ void hour_progression_layer_update_callback(Layer *layer, GContext *ctx)
   GColor8 hourColor = get_color_by_percent(hour_progression);
  	graphics_context_set_stroke_color(ctx, hourColor);
  	graphics_context_set_fill_color(ctx,  hourColor);
-  graphics_fill_rect(ctx, GRect(0, 0, (uint8_t)(hour_progression)/2, 3), 0, GCornerNone);
+  graphics_fill_rect(ctx, GRect(0, 0, (uint8_t)(hour_progression) * 69 / 100, 4), 0, GCornerNone);
 }
 
 static void load_hour_progression_layer(Layer *window_layer)
 {
-  hour_progression_layer = layer_create(GRect(21, 31, 50, 3));
+  hour_progression_layer = layer_create(GRect(29, 42, 69, 4));
   layer_set_update_proc(hour_progression_layer, &hour_progression_layer_update_callback);
   layer_add_child(window_layer, hour_progression_layer);
 }
 
 static void load_level_text_layers(Layer *window_layer)
 {
-  text_level_enemy_layer = text_layer_create(GRect(19, 17, 70, 12));
+  text_level_enemy_layer = text_layer_create(GRect(26, 23, 97, 16));
  	text_layer_set_text_alignment(text_level_enemy_layer, GTextAlignmentLeft);
  	text_layer_set_text_color(text_level_enemy_layer, GColorBlack);
  	text_layer_set_background_color(text_level_enemy_layer, GColorClear);
  	text_layer_set_font(text_level_enemy_layer, level_font);
  	layer_add_child(window_layer, text_layer_get_layer(text_level_enemy_layer));
 
- 	text_level_ally_layer = text_layer_create(GRect(85, 86, 70, 12));
+ 	text_level_ally_layer = text_layer_create(GRect(118, 117, 97, 16));
  	text_layer_set_text_alignment(text_level_ally_layer, GTextAlignmentLeft);
  	text_layer_set_text_color(text_level_ally_layer, GColorBlack);
  	text_layer_set_background_color(text_level_ally_layer, GColorClear);
