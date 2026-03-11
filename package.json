@@ -97,7 +97,14 @@
                     "file": "images/colorBackground.png",
                     "name": "BACKGROUND",
                     "targetPlatforms": [
-                        "basalt",
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/emeryBackground.png",
+                    "name": "BACKGROUND",
+                    "targetPlatforms": [
                         "emery"
                     ],
                     "type": "bitmap"
@@ -125,7 +132,6 @@
         },
         "sdkVersion": "3",
         "targetPlatforms": [
-            "basalt",
             "emery"
         ],
         "uuid": "2d81b6f1-3a4a-4375-8e51-a978a29648e6",
