@@ -20,44 +20,21 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/sleep.png",
-                    "name": "STATUS_SLEEP",
+                    "file": "data/009.png",
+                    "name": "ENEMY_POKEMON",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/paralysis.png",
-                    "name": "STATUS_PARALYSIS",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/menu.png",
-                    "menuIcon": true,
-                    "name": "MENU",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/colorBackground.png",
-                    "name": "BACKGROUND",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
+                    "type": "raw"
                 },
                 {
                     "characterRegex": "[0-9]",
                     "file": "fonts/Pokemon_GB.ttf",
                     "name": "FONT_LEVEL_10",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
                     "type": "font"
                 },
@@ -65,7 +42,8 @@
                     "file": "fonts/Pokemon_GB.ttf",
                     "name": "FONT_NAME_8",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
                     "type": "font"
                 },
@@ -74,7 +52,8 @@
                     "file": "fonts/Pokemon_GB.ttf",
                     "name": "FONT_TIME_24",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
                     "type": "font"
                 },
@@ -82,23 +61,36 @@
                     "file": "fonts/Pokemon_GB.ttf",
                     "name": "FONT_DATE_7",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
                     "type": "font"
                 },
                 {
-                    "file": "data/009.png",
-                    "name": "ENEMY_POKEMON",
+                    "file": "images/paralysis.png",
+                    "name": "STATUS_PARALYSIS",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
-                    "type": "raw"
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/menu.png",
+                    "menuIcon": true,
+                    "name": "MENU",
+                    "targetPlatforms": [
+                        "basalt",
+                        "emery"
+                    ],
+                    "type": "bitmap"
                 },
                 {
                     "file": "data/006b.png",
                     "name": "ALLY_POKEMON_SHINY",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
                     "type": "raw"
                 },
@@ -106,15 +98,35 @@
                     "file": "data/006.png",
                     "name": "ALLY_POKEMON",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "emery"
                     ],
                     "type": "raw"
+                },
+                {
+                    "file": "images/colorBackground.png",
+                    "name": "BACKGROUND",
+                    "targetPlatforms": [
+                        "basalt",
+                        "emery"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/sleep.png",
+                    "name": "STATUS_SLEEP",
+                    "targetPlatforms": [
+                        "basalt",
+                        "emery"
+                    ],
+                    "type": "bitmap"
                 }
             ]
         },
         "sdkVersion": "3",
         "targetPlatforms": [
-            "basalt"
+            "basalt",
+            "emery"
         ],
         "uuid": "2d81b6f1-3a4a-4375-8e51-a978a29648e6",
         "watchapp": {
