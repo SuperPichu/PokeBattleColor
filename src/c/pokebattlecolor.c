@@ -147,8 +147,8 @@ static void load_e_sequence() {
 
 void update_level_text()
 {
-  snprintf(level_string, sizeof(level_string), " %d", level_int);
-  snprintf(level_string_2, sizeof(level_string_2), " %d", level_int_2);
+  snprintf(level_string, sizeof(level_string), "Lv %d", level_int);
+  snprintf(level_string_2, sizeof(level_string_2), "Lv %d", level_int_2);
 	text_layer_set_text(text_level_enemy_layer, level_string_2);  
   text_layer_set_text(text_level_ally_layer, level_string);
 }
